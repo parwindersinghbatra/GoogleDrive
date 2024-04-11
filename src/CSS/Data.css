@@ -1,0 +1,40 @@
+.data{
+    /* display: flex; */
+    flex:1
+}
+.data_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height:40px;
+}
+.data_header_left{
+display: flex;
+align-items: center;
+}
+.data_header_left p{
+    font-size: 22px;
+}
+.data_header_right span:first-child{
+    border:1px solid;
+    padding:5px;
+    border-radius: 20px;
+    border-color: lightgray;
+    margin:0px 10px;
+}
+.data_header_right span:first-child svg{
+    margin:0px 8px;
+    align-items: center;
+}
+.detailsRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    margin:20px;
+}
+.detailsRow p{
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
