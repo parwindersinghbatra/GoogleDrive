@@ -20,7 +20,7 @@ const Data = () => {
         snapshot.docs.map((doc) => ({
           id: doc.id,
           data: doc.data(),
-        }))
+        })).reverse()
       );
     });
 
@@ -93,7 +93,8 @@ const Data = () => {
               <b>Owner</b>
             </p>
             <p>
-              <b>Last Modify</b> <ArrowDropDownOutlinedIcon />
+              <b>Last Modify</b> 
+              {/* <ArrowDropDownOutlinedIcon /> */}
             </p>
             <p>
               <b>File Size</b>{" "}
