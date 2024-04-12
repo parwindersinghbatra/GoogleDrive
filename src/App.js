@@ -13,8 +13,8 @@ function App() {
     {
       userProfile ? (
         <>
-        <Header photoURL ={userProfile.photoURL} />
-    <div className="App">
+        <Header/>
+           <div className="App">
         {/* <Login/> */}
       <Sidebar/>
       <Data/>
