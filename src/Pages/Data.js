@@ -9,6 +9,7 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
+
 const Data = () => {
   const [files, setFiles] = useState([]);
 
@@ -27,24 +28,8 @@ const Data = () => {
     };
   }, []);
 
-  // const formatDate = (timestamp) => {
-  //   const date = timestamp.toDate();
-  //   const today = new Date();
-  //   const diff = today - date;
-  //   const oneDay = 24 * 60 * 60 * 1000;
-  //   if (diff < oneDay) {
-  //     return "Today";
-  //   } else if (diff < 2 * oneDay) {
-  //     return "Yesterday";
-  //   } else {
-  //     const daysAgo = Math.floor(diff / oneDay);
-  //     return `${daysAgo} days ago`;
-  //   }
-  // }
-
   function getSize(dataSize){
       const units = ['bytes', 'KB', 'MB', 'GB', 'TB'];
-
       let unitIndex= 0
       let size = dataSize
       while(size >= 1024 && unitIndex < units.length - 1){
@@ -65,7 +50,6 @@ const Data = () => {
             <ReorderOutlinedIcon />
             <GridViewOutlinedIcon />
           </span>
-
           <span>
             <InfoOutlinedIcon />
           </span>
@@ -116,7 +100,6 @@ const Data = () => {
               </div>
             );
           })}
-          <div className="detailsRow"></div>
         </div>
       </div>
     </div>

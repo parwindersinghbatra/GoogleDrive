@@ -2,7 +2,6 @@ import React from 'react'
 import {auth, provider} from '../firebase'
 import { signInWithPopup } from 'firebase/auth'
 
-
 const Login = ({setUserProfile}) => {
   const signIn = async () => {
         try{
@@ -21,15 +20,13 @@ const Login = ({setUserProfile}) => {
             <div className='justify-center flex mt-14'>
                 <button className='bg-blue-500 bg-radient-to-r from-blue-500 to-blue-700 text-white font-bold py-2 px-4 rounded text-base w-2/4' role="button"
                 onClick={signIn}
-                
                 >
                     LOGIN TO GOOGLE DRIVE
                 </button>
             </div>
-            
       </div>
-
     </div>
+    
   )
 }
 
