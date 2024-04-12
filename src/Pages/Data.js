@@ -8,11 +8,12 @@ import ArrowDownwardOutlinedIcon from "@mui/icons-material/ArrowDownwardOutlined
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { db } from "../firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, deleteDoc, deleteField, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { getStorage, ref, deleteObject } from "firebase/storage";
 
 const Data = () => {
   const [files, setFiles] = useState([]);
-
+  
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "files"), (snapshot) => {
       setFiles(
@@ -38,6 +39,31 @@ const Data = () => {
       }
       return `${size.toFixed(2)} ${units[unitIndex]}`
   }
+
+  const storage = getStorage();
+
+  const deleteFileFromStorage = async (filePath) => {
+    const desertRef = ref(storage, filePath);
+    console.log(desertRef);
+    deleteObject(desertRef).then(() => {
+        // console.log('File deleted successfully');
+    }).catch((error) => {
+        console.error('Error deleting file:', error);
+    });
+  };
+
+  const handleFileDelete = async (filePath, fileID) => {
+    try{
+      await deleteFileFromStorage(filePath)
+      const fileDocRef = doc(db, 'files', fileID);
+      await deleteDoc(fileDocRef);
+      // console.log("Handling file delete",fileDocRef)
+    }
+    catch(error){
+        console.error('Error deleting file:', error);
+    }
+  }
+
   return (
     <div className="data">
       <div className="data_header">
@@ -95,7 +121,16 @@ const Data = () => {
                   }</p>
                 <p>
                   {" "}
-                  <MoreVertOutlinedIcon />
+                  <div class="dropdown">
+                <span><MoreVertOutlinedIcon 
+                  />
+                  </span> 
+                       <div class="dropdown-content">
+                    <p
+                      onClick={() => handleFileDelete(data.data.URL, data.id)}
+                    >Delete</p>
+                    </div>
+                  </div>
                 </p>
               </div>
             );
