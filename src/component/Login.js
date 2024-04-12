@@ -1,12 +1,16 @@
 import React from 'react'
 import {auth, provider} from '../firebase'
-import App from '../App'
+import { signInWithPopup } from 'firebase/auth'
+
 
 const Login = ({setUserProfile}) => {
-  const signIn = () => {
-      auth.signInWithPopUp(provider).then((result) => {
-        setUserProfile(result.user)
-      })
+  const signIn = async () => {
+        try{
+            const result = await signInWithPopup(auth, provider)
+            setUserProfile(result.user)
+        }catch(e){
+          console.error(e)
+        }
   }
   return (
     <div className='flex h-screen justify-center items-center '>

@@ -24,9 +24,6 @@ function App() {
         <Login setUserProfile={setUserProfile}/>
       )
     }
-    
-
-    
     </>
     
   );

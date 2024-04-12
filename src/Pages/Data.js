@@ -27,20 +27,20 @@ const Data = () => {
     };
   }, []);
 
-  const formatDate = (timestamp) => {
-    const date = timestamp.toDate();
-    const today = new Date();
-    const diff = today - date;
-    const oneDay = 24 * 60 * 60 * 1000;
-    if (diff < oneDay) {
-      return "Today";
-    } else if (diff < 2 * oneDay) {
-      return "Yesterday";
-    } else {
-      const daysAgo = Math.floor(diff / oneDay);
-      return `${daysAgo} days ago`;
-    }
-  }
+  // const formatDate = (timestamp) => {
+  //   const date = timestamp.toDate();
+  //   const today = new Date();
+  //   const diff = today - date;
+  //   const oneDay = 24 * 60 * 60 * 1000;
+  //   if (diff < oneDay) {
+  //     return "Today";
+  //   } else if (diff < 2 * oneDay) {
+  //     return "Yesterday";
+  //   } else {
+  //     const daysAgo = Math.floor(diff / oneDay);
+  //     return `${daysAgo} days ago`;
+  //   }
+  // }
 
   function getSize(dataSize){
       const units = ['bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -102,8 +102,8 @@ const Data = () => {
                 </p>
                 <p>
                   {
-                    // new Date(data.data.timestamp?.seconds * 1000).toUTCString()
-                    formatDate(data.data.timestamp)
+                    new Date(data.data.timestamp?.seconds * 1000).toUTCString()
+                    // formatDate(data.data.timestamp)
                   }
                 </p>
                 <p>{
